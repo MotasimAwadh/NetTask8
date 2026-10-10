@@ -1,1 +1,0 @@
-ng new first-angular-app --no-zoneless
