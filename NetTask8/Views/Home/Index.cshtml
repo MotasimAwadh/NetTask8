@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div>
+    <h1 >Create Request</h1>
+    <a asp-controller="Request" asp-action="Create">
+        Create Request
+    </a>
+
+</div>
+}

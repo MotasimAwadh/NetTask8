@@ -1,0 +1,41 @@
+﻿@model RequestCategoryViewModel
+
+<div class="mb-3">
+    <h2>Create Request</h2>
+</div>
+
+<div class="col-md-8 col-lg-6 mx-auto">
+    <form method="post" enctype="multipart/form-data" class="card card-body shadow-sm">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="FileNumber" class="form-label"></label>
+            <input asp-for="FileNumber" class="form-control" />
+            <span asp-validation-for="FileNumber" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Subject" class="form-label"></label>
+            <input asp-for="Subject" class="form-control" />
+            <span asp-validation-for="Subject" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label"></label>
+            <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select">
+                <option value="">-- Select category --</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="file" class="form-label">Upload File</label>
+            <input type="file" id="file" name="file" class="form-control" />
+            <span asp-validation-for="@Model" data-valmsg-for="file" class="text-danger small"></span>
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</div>

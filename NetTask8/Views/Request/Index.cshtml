@@ -1,0 +1,47 @@
+﻿<div class="card shadow-sm">
+    <div class="card-header bg-white py-3">
+        <h5 class="mb-0">My Requests</h5>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>File Number</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Approver 1</th>
+                    <th>Approver 2</th>
+                    <th class="text-end">File</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><span class="text-muted">#</span>@item.FileNumber</td>
+                        <td class="text-wrap" style="max-width: 300px;">@item.Subject</td>
+                        <td class="text-nowrap">@item.Date.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <span class="badge rounded-pill text-bg-secondary">
+                                @item.Category?.Name
+                            </span>
+                        </td>
+                        <td>@item.Status</td>
+                        <td>@(item.Approval1User?.UserName ?? "—")</td>
+                        <td>@(item.Approval2User?.UserName ?? "—")</td>
+                        <td class="text-end text-nowrap">
+                            <a class="btn btn-sm btn-outline-secondary"
+                               asp-action="Download"
+                               asp-route-filePath="@item.FilePath">
+                                <i class="bi bi-download"></i> Download
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
